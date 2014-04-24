@@ -1,23 +1,28 @@
-/* jshint forin:true, noarg:true, noempty:true, eqeqeq:true, boss:true, undef:true, curly:true, browser:true, jquery:true */
 /*
- * jQuery MultiSelect UI Widget 1.13
- * Copyright (c) 2012 Eric Hynds
+ * jQuery UI Multiselect
  *
- * http://www.erichynds.com/jquery/jquery-ui-multiselect-widget/
+ * Authors:
+ *  Michael Aufreiter (quasipartikel.at)
+ *  Yanick Rochon (yanick.rochon[at]gmail[dot]com)
+ * 
+ * Dual licensed under the MIT (MIT-LICENSE.txt)
+ * and GPL (GPL-LICENSE.txt) licenses.
+ * 
+ * http://www.quasipartikel.at/multiselect/
  *
+ * 
  * Depends:
- *   - jQuery 1.4.2+
- *   - jQuery UI 1.8 widget factory
+ *	ui.core.js
+ *	ui.sortable.js
  *
  * Optional:
- *   - jQuery UI effects
- *   - jQuery UI position utility
- *
- * Dual licensed under the MIT and GPL licenses:
- *   http://www.opensource.org/licenses/mit-license.php
- *   http://www.gnu.org/licenses/gpl.html
- *
-*/
+ * localization (http://plugins.jquery.com/project/localisation)
+ * scrollTo (http://plugins.jquery.com/project/ScrollTo)
+ * 
+ * Todo:
+ *  Make batch actions faster
+ *  Implement dynamic insertion through remote calls
+ */
 
 
 (function ($, undefined) {

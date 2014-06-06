@@ -37,6 +37,8 @@
             height: 175,
             minWidth: 225,
             maxWidth: null,
+            minMenuWidth: 225,
+            maxMenuWidth: 450,
             classes: '',
             checkAllText: 'Check all',
             uncheckAllText: 'Uncheck all',
@@ -448,15 +450,26 @@
         // set menu width
         _setMenuWidth: function () {
             var m = this.menu,
-			width = this.button.outerWidth() -
-				parseInt(m.css('padding-left'), 10) -
-				parseInt(m.css('padding-right'), 10) -
-				parseInt(m.css('border-right-width'), 10) -
-				parseInt(m.css('border-left-width'), 10);
+                o = this.options,
+	        width = this.button.outerWidth() -
+		    parseInt(m.css('padding-left'), 10) -
+		    parseInt(m.css('padding-right'), 10) -
+		    parseInt(m.css('border-right-width'), 10) -
+		    parseInt(m.css('border-left-width'), 10);
 
-            m.width(width || this.button.outerWidth());
+            width = width || this.button.outerWidth();
+
+            m.show();
+            $('span', $('ul', m).last()).each(function (i, ele) {
+                var w = $(ele).outerWidth();
+                if (w > width && width < o.maxMenuWidth) {
+                    width = (w < o.maxMenuWidth ? w : o.maxMenuWidth) + (m[0].offsetWidth - m[0].clientWidth);
+                }
+            });
+            m.hide();
+
+            m.width(((o.header && o.minMenuWidth > width)) ? o.minMenuWidth : width);
         },
-
         // move up or down within the menu
         _traverse: function (which, start) {
             var $start = $(start),

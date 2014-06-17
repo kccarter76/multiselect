@@ -249,11 +249,11 @@
         _bindEvents: function () {
             var self = this, button = this.button;
 
-            function clickHandler() {
+            function clickHandler(e) {
                 if (!self._isOpen) {
-                    self._setMenuWidth();
+                    self._setMenuWidth(e);
                 }
-                self[self._isOpen ? 'close' : 'open']();
+                self[self._isOpen ? 'close' : 'open'](e, $(this));
                 return false;
             }
 
@@ -573,9 +573,9 @@
         },
 
         // open the menu
-        open: function (e) {
+        open: function (e, btn) {
             var self = this,
-			button = this.button,
+			button = btn || this.button,
 			menu = this.menu,
 			speed = this.speed,
 			o = this.options,
